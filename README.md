@@ -65,7 +65,7 @@ Note that you only need to perform step (2) to step (5) **once** to generate gri
 For toponym recognition, we used [spaCy](https://spacy.io/usage) and [NeuroTPR](https://github.com/geoai-lab/NeuroTPR). Because NeuroTPR uses [tensorflow_hub](https://www.tensorflow.org/hub/installation) which only supports Tensorflow 1.15 instead of Tensorflow 1.14, make sure you install Tensorflow 1.15. To deal with `InvalidArgumentError: ConcatOp : Dimensions of inputs should match` that you may encounter, starting from line 208 you can change `geoparse.py` used by NeuroTPR as below.
 
 <div align=center>
-<img src="screenshots/neurotpr-geoparse-change.PNG" width='20%' height = '20%'>
+<img src="screenshots/neurotpr-geoparse-change.PNG">
 </div>
 
 For toponym resolution, we used 
