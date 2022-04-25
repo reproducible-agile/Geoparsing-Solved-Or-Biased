@@ -6,3 +6,10 @@ data/admin0-natural-earth/ne_10m_admin_0_countries.README.html
 data/admin0-natural-earth/ne_10m_admin_0_countries.shp
 data/admin0-natural-earth/ne_10m_admin_0_countries.shx
 data/admin0-natural-earth/ne_10m_admin_0_countries.VERSION.txt
+data/evaluation-corpora/data-patches/GeoVirus_patches.tsv
+data/evaluation-corpora/data-patches/lgl_patches.tsv
+data/evaluation-corpora/data-patches/WikToR_patches.tsv
+data/evaluation-corpora/original-datasets/geocorpora.tsv
+data/evaluation-corpora/original-datasets/GeoVirus.xml
+data/evaluation-corpora/original-datasets/lgl.xml
+data/evaluation-corpora/original-datasets/WikToR.xml
