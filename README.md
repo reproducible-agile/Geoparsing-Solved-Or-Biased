@@ -20,7 +20,7 @@ For the representation bias analysis, we generated grids containing a summary ab
 First, use [XY Table To Point](https://pro.arcgis.com/en/pro-app/latest/tool-reference/data-management/xy-table-to-point.htm) to convert WikToR's annotated locations into point features.
 
 <div align=center>
-<img src="screenshots/grid-summary-generation-1.PNG" width='40%' height = '40%'>
+<img src="screenshots/grid-summary-generation-1.PNG" width='20%' height = '20%'>
 </div>
 
 
