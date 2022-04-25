@@ -12,7 +12,7 @@ The country/region shapefile can be accessed as [Admin-0 Countries](https://www.
 To achieve both our spatially-explicit geoparsing performance evaluation and geographic bias evaluation, we extracted all annotated locations from training and evaluation corpora as well as the GeoNames gazetteer. The script used is [`scripts/annotated-poi-extraction.ipynb`](scripts/annotated-poi-extraction.ipynb). These extracted locations are stored in [`data/extracted-annotated-locations/`](data/extracted-annotated-locations/). 
 
 ### Splitting Articles in LGL, GeoVirus, and WikToR
-To more easily run [Edinburgh Geoparser](https://www.inf.ed.ac.uk/research/isdd/admin/package?view=1&id=199), we split articles in LGL, GeoVirus, and WikToR into separate datasets, which can be found at [`data/evaluation-corpora/split-datasets/`](data/evaluation-corpora/split-datasets/).
+To more easily run [Edinburgh Geoparser](https://www.inf.ed.ac.uk/research/isdd/admin/package?view=1&id=199), we split articles in LGL, GeoVirus, and WikToR into separate datasets, which can be found at [`data/evaluation-corpora/split-datasets/`](data/evaluation-corpora/split-datasets/). The scripts used is [`scripts/toponym-resolution-evaluation-corpora-splitting.ipynb`](scripts/toponym-resolution-evaluation-corpora-splitting.ipynb).
 
 ### Grid Summary Generation
 For the representation bias analysis, we generated grids containing a summary about the number of annotated locations located within for different datasets, respectively. This grid summary generation process was done in ArcGIS Pro 2.9.0. An example of using extracted annotated locations from WikToR is attached below.
@@ -62,14 +62,17 @@ For the representation bias analysis, we generated grids containing a summary ab
 Note that you only need to perform step (2) to step (5) **once** to generate grids from the country/region shapefile. You can repeat step (1), step (6), and step (7) to generate grid summary for LGL, GeoVirus, GeoWiki, GeoCorpora, and GeoNames. 
 
 ## Deploying Geoparsers
-For toponym recognition, we used [spaCy](https://spacy.io/usage) and [NeuroTPR](https://github.com/geoai-lab/NeuroTPR). Because NeuroTPR uses [tensorflow_hub](https://www.tensorflow.org/hub/installation) which only supports Tensorflow 1.15 instead of Tensorflow 1.14, make sure you install Tensorflow 1.15. To deal with `InvalidArgumentError: ConcatOp : Dimensions of inputs should match` that you may encounter, starting from line 208 you can change `geoparse.py` used by NeuroTPR as below.
+For toponym recognition, we used [spaCy](https://spacy.io/usage) and [NeuroTPR](https://github.com/geoai-lab/NeuroTPR). Because NeuroTPR uses [tensorflow_hub](https://www.tensorflow.org/hub/installation) which only supports Tensorflow 1.15 instead of Tensorflow 1.14, make sure you install Tensorflow 1.15. To deal with `InvalidArgumentError: ConcatOp : Dimensions of inputs should match` that you may encounter when running NeuroTPR, you can change `geoparse.py` in the NeuroTPR site-packages as below.
 
 <div align=center>
 <img src="screenshots/neurotpr-geoparse-change.PNG">
 </div>
 
-For toponym resolution, we used 
+For toponym resolution, we used [Edinburgh Geoparser](https://www.inf.ed.ac.uk/research/isdd/admin/package?view=1&id=199) and [CamCoder](https://github.com/milangritta/Geocoding-with-Map-Vector). For CamCoder, because we run the experiment in Python 3.6.13 environment instead of Python 2.7+ environment used by their authors, here we provide scripts that were updated for our study. These scripts include [`models/CamCoder/root/context2vec.py`](models/CamCoder/root/context2vec.py), [`models/CamCoder/root/geoparse.py`](models/CamCoder/root/geoparse.py), [`models/CamCoder/root/preprocessing.py`](models/CamCoder/root/preprocessing.py), and [`models/CamCoder/root/text2mapVec.py`](models/CamCoder/root/text2mapVec.py).
 
 ## Spatially-Explicit Geoparsing Performance Evaluation
+[`scripts/toponym-recognition-GeoCorpora-spaCy.py`](scripts/toponym-recognition-GeoCorpora-spaCy.py) and [`scripts/toponym-recognition-GeoCorpora-NeuroTPR.py`](scripts/toponym-recognition-GeoCorpora-NeuroTPR.py) perform toponym recognition on GeoCorpora with spaCy and NeuroTPR, respectively. [`scripts/toponym-recognition-GeoCorpora-spaCy.py`](scripts/toponym-recognition-GeoCorpora-spaCy.py) and [`scripts/toponym-recognition-GeoCorpora-NeuroTPR.py`](scripts/toponym-recognition-GeoCorpora-NeuroTPR.py) perform toponym recognition on GeoCorpora with spaCy and NeuroTPR, respectively.
+
+A tutorial on how to properly use Edinburgh Geoparser can be accessed [here](http://programminghistorian.org/en/lessons/geoparsing-text-with-edinburgh). After using Edinburgh Geoparser to perform toponym resolution on LGL, GeoVirus, and WikToR, [`scripts/toponym-resolution-results-Edinburgh-Geoparser-integration.ipynb`](scripts/toponym-resolution-results-Edinburgh-Geoparser-integration.ipynb) need to be be run to integrate the output files for further evaluations. Note that toponym resolution results provided by Edinburgh Geoparser may not be exactly the same when running it each time. Therefore, please make sure to use our provided results for further analyses. [`models/CamCoder/root/toponym-resolution-LGL-CamCoder.py`](models/CamCoder/root/toponym-resolution-LGL-CamCoder.py), [`models/CamCoder/root/toponym-resolution-GeoVirus-CamCoder.py`](models/CamCoder/root/toponym-resolution-GeoVirus-CamCoder.py), and [`models/CamCoder/root/toponym-resolution-WikToR-CamCoder.py`](models/CamCoder/root/toponym-resolution-WikToR-CamCoder.py) perform toponym resolution with CamCoder on LGL, GeoVirus, and WikToR, respectively.
 
 ## Geographic Bias Evaluation
