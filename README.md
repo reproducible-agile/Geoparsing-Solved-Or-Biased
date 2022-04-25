@@ -50,7 +50,7 @@ For the representation bias analysis, we generated grids containing a summary ab
 (6) Use [Summarize Within](https://pro.arcgis.com/en/pro-app/latest/tool-reference/analysis/summarize-within.htm) to summarize the number of annotated locations within each grid.
 
 <div align=center>
-<img src="screenshots/grid-summary-generation-6.PNG" width='30%' height = '30%'>
+<img src="screenshots/grid-summary-generation-6.PNG" width='50%' height = '50%'>
 </div>
 
 (7) Use [Export Table](https://pro.arcgis.com/en/pro-app/latest/help/data/tables/export-tables.htm) to export the attribute table of grid features to [`data/grids-100sqkm-admin0-natural-earth/`](data/grids-100sqkm-admin0-natural-earth/).
