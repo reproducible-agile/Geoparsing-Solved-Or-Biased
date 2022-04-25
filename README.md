@@ -87,7 +87,7 @@ After having all toponym recognition and resolution results ready, you can conti
 (2) Use [Hot Spot Analysis (Getis-Ord Gi*)](https://pro.arcgis.com/en/pro-app/latest/tool-reference/spatial-statistics/hot-spot-analysis.htm) to perform spatial autocorrelation analysis. In our study, the parameters of `Conceptualization of Spatial Relationships` and `Number of Neighbors` were set as `K nearest neighbors` and `8`, respectively. Note that the `Input Field` should be changed from `median_error_distance` to `recall` when performinng spatial autocorrelation analysis on toponym recognition results.
 
 <div align=center>
-<img src="screenshots/neurotpr-geoparse-change.PNG" width='30%' height = '30%'>
+<img src="screenshots/hot-spot-analysis-wiktor-camcoder.PNG" width='30%' height = '30%'>
 </div>
 
 You can repeat the above steps to perform spatial autocorrelation analysis on the remaining toponym recognition and resolution results.
