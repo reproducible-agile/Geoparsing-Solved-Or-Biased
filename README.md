@@ -18,7 +18,7 @@ To more easily run [Edinburgh Geoparser](https://www.inf.ed.ac.uk/research/isdd/
 For the representation bias analysis, we generated grids containing a summary about the number of annotated locations located within for different datasets, respectively. This grid summary generation process was done in ArcGIS Pro 2.9.0. An example of using extracted annotated locations from WikToR is attached below.
 
 First, use [XY Table To Point](https://pro.arcgis.com/en/pro-app/latest/tool-reference/data-management/xy-table-to-point.htm). 
-![XY Table to Point](screenshots/grid-summary-generation-1.png)
+![XY Table to Point](screenshots/grid-summary-generation-1.PNG)
 
 
 ## Running Geoparsers
