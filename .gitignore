@@ -16,3 +16,4 @@ data/evaluation-corpora/original-datasets/WikToR.xml
 data/gazetteers/allCountries.txt
 data/training-corpora/geowiki.txt
 *.xml
+data/grids-100sqkm-admin0-natural-earth/schema.ini
