@@ -20,37 +20,37 @@ For the representation bias analysis, we generated grids containing a summary ab
 (1) First, use [XY Table To Point](https://pro.arcgis.com/en/pro-app/latest/tool-reference/data-management/xy-table-to-point.htm) to convert WikToR's annotated locations into point features.
 
 <div align=center>
-<img src="screenshots/grid-summary-generation-1.PNG" width='20%' height = '20%'>
+<img src="screenshots/grid-summary-generation-1.PNG" width='30%' height = '30%'>
 </div>
 
 (2) Then, use [Project](https://pro.arcgis.com/en/pro-app/latest/tool-reference/data-management/project.htm) to project the point features from WGS 1984 to Eckert IV (World), which is the selected projected coordinate system in our study.
 
 <div align=center>
-<img src="screenshots/grid-summary-generation-2.PNG" width='20%' height = '20%'>
+<img src="screenshots/grid-summary-generation-2.PNG" width='30%' height = '30%'>
 </div>
 
 (3) After adding the country/region shapefile to the map project, apply the same projection to it.
 
 <div align=center>
-<img src="screenshots/grid-summary-generation-3.PNG" width='20%' height = '20%'>
+<img src="screenshots/grid-summary-generation-3.PNG" width='30%' height = '30%'>
 </div>
 
 (4) Use [Grid Index Features](https://pro.arcgis.com/en/pro-app/latest/tool-reference/cartography/grid-index-features.htm) to generate grids from the country/region polygon features.
 
 <div align=center>
-<img src="screenshots/grid-summary-generation-4.PNG" width='20%' height = '20%'>
+<img src="screenshots/grid-summary-generation-4.PNG" width='30%' height = '30%'>
 </div>
 
 (5) Then, use [Spatial Join](https://pro.arcgis.com/en/pro-app/latest/tool-reference/analysis/spatial-join.htm) to join the country/region polygon features and grids to add the country/region information to every grid. 
 
 <div align=center>
-<img src="screenshots/grid-summary-generation-5.PNG" width='20%' height = '20%'>
+<img src="screenshots/grid-summary-generation-5.PNG" width='30%' height = '30%'>
 </div>
 
 (6) Use [Summarize Within](https://pro.arcgis.com/en/pro-app/latest/tool-reference/analysis/summarize-within.htm) to summarize the number of annotated locations within each grid.
 
 <div align=center>
-<img src="screenshots/grid-summary-generation-6.PNG" width='20%' height = '20%'>
+<img src="screenshots/grid-summary-generation-6.PNG" width='30%' height = '30%'>
 </div>
 
 (7) Use [Export Table](https://pro.arcgis.com/en/pro-app/latest/help/data/tables/export-tables.htm) to export the attribute table of grid features to [`data/grids-100sqkm-admin0-natural-earth/`](data/grids-100sqkm-admin0-natural-earth/).
