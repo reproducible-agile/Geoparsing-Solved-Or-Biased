@@ -71,8 +71,25 @@ For toponym recognition, we used [spaCy](https://spacy.io/usage) and [NeuroTPR](
 For toponym resolution, we used [Edinburgh Geoparser](https://www.inf.ed.ac.uk/research/isdd/admin/package?view=1&id=199) and [CamCoder](https://github.com/milangritta/Geocoding-with-Map-Vector). For CamCoder, because we run the experiment in Python 3.6.13 environment instead of Python 2.7+ environment used by their authors, here we provide scripts that were updated for our study. These scripts include [`models/CamCoder/root/context2vec.py`](models/CamCoder/root/context2vec.py), [`models/CamCoder/root/geoparse.py`](models/CamCoder/root/geoparse.py), [`models/CamCoder/root/preprocessing.py`](models/CamCoder/root/preprocessing.py), and [`models/CamCoder/root/text2mapVec.py`](models/CamCoder/root/text2mapVec.py).
 
 ## Spatially-Explicit Geoparsing Performance Evaluation
+If you are interested in how we run toponym recognition and resolution models, you can follow the step-by-step instructions below. Alternatively, you can directly use our shared geoparsed results in [`geoparsed-results/`](geoparsed-results/) and jump to the **Spatial Autocorrelation Analysis** section.
+
+### Running Toponym Recognition Models
 [`scripts/toponym-recognition-GeoCorpora-spaCy.py`](scripts/toponym-recognition-GeoCorpora-spaCy.py) and [`scripts/toponym-recognition-GeoCorpora-NeuroTPR.py`](scripts/toponym-recognition-GeoCorpora-NeuroTPR.py) perform toponym recognition on GeoCorpora with spaCy and NeuroTPR, respectively. [`scripts/toponym-recognition-GeoCorpora-spaCy.py`](scripts/toponym-recognition-GeoCorpora-spaCy.py) and [`scripts/toponym-recognition-GeoCorpora-NeuroTPR.py`](scripts/toponym-recognition-GeoCorpora-NeuroTPR.py) perform toponym recognition on GeoCorpora with spaCy and NeuroTPR, respectively.
 
+### Running Toponym Resolution Models
 A tutorial on how to properly use Edinburgh Geoparser can be accessed [here](http://programminghistorian.org/en/lessons/geoparsing-text-with-edinburgh). After using Edinburgh Geoparser to perform toponym resolution on LGL, GeoVirus, and WikToR, [`scripts/toponym-resolution-results-Edinburgh-Geoparser-integration.ipynb`](scripts/toponym-resolution-results-Edinburgh-Geoparser-integration.ipynb) need to be be run to integrate the output files for further evaluations. Note that toponym resolution results provided by Edinburgh Geoparser may not be exactly the same when running it each time. Therefore, please make sure to use our provided results for further analyses. [`models/CamCoder/root/toponym-resolution-LGL-CamCoder.py`](models/CamCoder/root/toponym-resolution-LGL-CamCoder.py), [`models/CamCoder/root/toponym-resolution-GeoVirus-CamCoder.py`](models/CamCoder/root/toponym-resolution-GeoVirus-CamCoder.py), and [`models/CamCoder/root/toponym-resolution-WikToR-CamCoder.py`](models/CamCoder/root/toponym-resolution-WikToR-CamCoder.py) perform toponym resolution with CamCoder on LGL, GeoVirus, and WikToR, respectively.
+
+### Spatial Autocorrelation Analysis
+After having all toponym recognition and resolution results ready, you can continue to perform spatial autocorrelation analysis on them, which was also done in ArcGIS Pro 2.9.0. An example of using toponym resolution result generated from WikToR by CamCoder is attached below.
+
+(1) Same as the first two steps in **Grid Summary Generation**, use [XY Table To Point](https://pro.arcgis.com/en/pro-app/latest/tool-reference/data-management/xy-table-to-point.htm) to convert the toponym resolution result to point features, and then use [Project](https://pro.arcgis.com/en/pro-app/latest/tool-reference/data-management/project.htm) to project the point features from WGS 1984 to Eckert IV (World).
+
+(2) Use [Hot Spot Analysis (Getis-Ord Gi*)](https://pro.arcgis.com/en/pro-app/latest/tool-reference/spatial-statistics/hot-spot-analysis.htm) to perform spatial autocorrelation analysis. In our study, the parameters of `Conceptualization of Spatial Relationships` and `Number of Neighbors` were set as `K nearest neighbors` and `8`, respectively. Note that the `Input Field` should be changed from `median_error_distance` to `recall` when performinng spatial autocorrelation analysis on toponym recognition results.
+
+<div align=center>
+<img src="screenshots/neurotpr-geoparse-change.PNG" width='30%' height = '30%'>
+</div>
+
+You can repeat the above steps to perform spatial autocorrelation analysis on the remaining toponym recognition and resolution results.
 
 ## Geographic Bias Evaluation
