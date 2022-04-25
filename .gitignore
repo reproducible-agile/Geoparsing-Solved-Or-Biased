@@ -13,3 +13,5 @@ data/evaluation-corpora/original-datasets/geocorpora.tsv
 data/evaluation-corpora/original-datasets/GeoVirus.xml
 data/evaluation-corpora/original-datasets/lgl.xml
 data/evaluation-corpora/original-datasets/WikToR.xml
+data/gazetteers/allCountries.txt
+data/training-corpora/geowiki.txt
