@@ -90,7 +90,7 @@ After having all toponym recognition and resolution results ready, you can conti
 
 (1) Same as the first two steps in **Grid Summary Generation**, use [XY Table To Point](https://pro.arcgis.com/en/pro-app/latest/tool-reference/data-management/xy-table-to-point.htm) to convert the toponym resolution result to point features, and then use [Project](https://pro.arcgis.com/en/pro-app/latest/tool-reference/data-management/project.htm) to project the point features from WGS 1984 to Eckert IV (World).
 
-(2) Use [Hot Spot Analysis (Getis-Ord Gi*)](https://pro.arcgis.com/en/pro-app/latest/tool-reference/spatial-statistics/hot-spot-analysis.htm) to perform spatial autocorrelation analysis. In our study, the parameters of `Conceptualization of Spatial Relationships` and `Number of Neighbors` were set as `K nearest neighbors` and `8`, respectively. Note that the `Input Field` should be changed from `median_error_distance` to `recall` when performinng spatial autocorrelation analysis on toponym recognition results.
+(2) Use [Hot Spot Analysis (Getis-Ord Gi*)](https://pro.arcgis.com/en/pro-app/latest/tool-reference/spatial-statistics/hot-spot-analysis.htm) to perform spatial autocorrelation analysis. In our study, the parameters of `Conceptualization of Spatial Relationships` and `Number of Neighbors` were set as `K nearest neighbors` and `8`, respectively. Note that the `Input Field` should be changed from `median_error_distance` to `recall` when performing spatial autocorrelation analysis on toponym recognition results.
 
 <div align=center>
 <img src="screenshots/hot-spot-analysis-wiktor-camcoder.PNG" width='30%' height = '30%'>
