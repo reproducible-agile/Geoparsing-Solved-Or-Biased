@@ -62,7 +62,9 @@ For the representation bias analysis, we generated grids containing a summary ab
 Note that you only need to perform step (2) to step (5) **once** to generate grids from the country/region shapefile. You can repeat step (1), step (6), and step (7) to generate grid summaries for LGL, GeoVirus, GeoWiki, GeoCorpora, and GeoNames, respectively. 
 
 ## Deploying Geoparsers
-For toponym recognition, we used [spaCy](https://spacy.io/usage) and [NeuroTPR](https://github.com/geoai-lab/NeuroTPR). Because NeuroTPR uses [tensorflow_hub](https://www.tensorflow.org/hub/installation) which only supports Tensorflow 1.15 instead of Tensorflow 1.14, make sure you install Tensorflow 1.15. To deal with `InvalidArgumentError: ConcatOp : Dimensions of inputs should match` that you may encounter when running NeuroTPR, you can change `geoparse.py` in the NeuroTPR site-packages as below.
+For toponym recognition, we used [spaCy](https://spacy.io/usage) (version 2.1) and [NeuroTPR](https://github.com/geoai-lab/NeuroTPR).
+
+After you unzip the pre-trained NeuroTPR models, please put all the files in [`models/NeuroTPR`](models/NeuroTPR). Also, because NeuroTPR uses [tensorflow_hub](https://www.tensorflow.org/hub/installation) which only supports Tensorflow 1.15 instead of Tensorflow 1.14, make sure you install Tensorflow 1.15. To deal with `InvalidArgumentError: ConcatOp : Dimensions of inputs should match` that you may encounter when running NeuroTPR, you can change `geoparse.py` in the NeuroTPR site-packages as below.
 
 <div align=center>
 <img src="screenshots/neurotpr-geoparse-change.PNG">
