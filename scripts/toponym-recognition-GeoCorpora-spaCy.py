@@ -12,7 +12,7 @@ import spacy
 nlp = spacy.load("en_core_web_lg")
 
 ## read GeoCorpora
-dir_geocorpora = os.path.dirname(os.getcwd())+'\\data\\evaluation-corpora\\original-datasets\\geocorpora.tsv'
+dir_geocorpora = os.path.join(os.path.dirname(os.getcwd()), 'data', 'evaluation-corpora', 'original-datasets', 'geocorpora.tsv')
 df_geocorpora = pd.read_csv(dir_geocorpora, sep = '\t', encoding ='ISO-8859-1')
 
 ## keep only useful columns and remove duplicate tweets
@@ -61,5 +61,5 @@ for i in range(len(df_geocorpora_poi['recall'])):
         df_geocorpora_poi['recall'].iloc[i] = np.sum(df_geocorpora_poi['recall'].iloc[i])/len(df_geocorpora_poi['recall'].iloc[i])
 
 ## save toponym recognition results
-dir_geocorpora_results = os.path.dirname(os.getcwd())+'\\geoparsed-results'
-df_geocorpora_poi.to_csv(dir_geocorpora_results+'\\geocorpora_geotagged_results_spaCy.csv')
+dir_geocorpora_results = os.path.join(os.path.dirname(os.getcwd()), 'geoparsed-results-reproduced')
+df_geocorpora_poi.to_csv(os.path.join(dir_geocorpora_results, 'geocorpora_geotagged_results_spaCy.csv'))
